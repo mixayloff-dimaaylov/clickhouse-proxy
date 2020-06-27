@@ -103,7 +103,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         dumped = json.dumps(resp) 
 
         self._set_response(200, dumped.encode('utf-8'))
-        self.wfile.write(dumped.encode('utf-8'))    
 
 if __name__ == '__main__':
     global db
