@@ -12,7 +12,7 @@ import clickhouse_driver
 
 
 # TODO: check for uint range
-SERVER_ADDRESS = 'localhost'
+SERVER_ADDRESS = ''
 SERVER_PORT = int('8000')
 
 
