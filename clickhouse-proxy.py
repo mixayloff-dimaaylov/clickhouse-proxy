@@ -108,8 +108,8 @@ if __name__ == '__main__':
     global db
     # TODO: Config parsing
 
+    db = db_connect()
+
     httpd = HTTPServer((SERVER_ADDRESS, SERVER_PORT), SimpleHTTPRequestHandler)
     httpd.serve_forever()
-
-    db = db_connect()
 
