@@ -70,7 +70,7 @@ cases = {
 
 
 def db_connect():
-    client = Client(host=CH_ADDRESS, user=CH_LOGIN, password=CH_PASSWORD)
+    client = clickhouse_driver.Client(host=CH_ADDRESS, user=CH_LOGIN, password=CH_PASSWORD)
     return client
 
 
