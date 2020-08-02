@@ -32,7 +32,7 @@ def api_ssareas(req: dict) -> dict:
     return resp
 
 
-def api_fadingstat(req: dict) -> dict:
+def api_fadingstats(req: dict) -> dict:
     resp = dict(req)
     return resp
 
@@ -61,7 +61,7 @@ def api_dcmstats(req: dict) -> dict:
 cases = {
     '/api/quality':       api_quality,
     '/api/ss-areas':      api_ssareas,
-    '/api/fading-stat':   api_fadingstat,
+    '/api/fading-stat':   api_fadingstats,
     '/api/errors':        api_errors,
     '/api/set-reference': api_setreference,
     '/api/status':        api_status,
