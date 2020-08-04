@@ -133,7 +133,6 @@ ANY INNER JOIN (
             computed.xz1
         WHERE
             time BETWEEN %i and %i
-            and not(startsWith(sat, 'GLONASS') and sigcomb = 'L1CA+L2P') --костыль, не удалять!
         group by
             time,
             sat
@@ -153,7 +152,6 @@ ANY INNER JOIN (
                 computed.NTDerivatives
             WHERE
                 time BETWEEN %i and %i
-                and not(startsWith(sat, 'GLONASS') and sigcomb = 'L1CA+L2P') --костыль, не удалять!
             group by
                 time,
                 sat
