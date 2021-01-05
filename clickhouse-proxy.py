@@ -102,8 +102,8 @@ def api_ssareas(req: dict) -> dict:
     query_id = str(req['query_id'])
 
     # Get current time
-    t_to = int(datetime.utcnow().timestamp() * 1000)
-    t_from = t_to - 10000
+    t_to = int(datetime.now().timestamp() * 1000)
+    t_from = t_to - 10000 * 10
 
     req_str = """
 select *
@@ -184,6 +184,16 @@ LIMIT 100
         intensity = item[5]
 
         sats = []
+
+        if intensity <= 0.01:
+            sat_intensity = 1
+        elif intensity <= 0.05:
+            sat_intensity = 2
+        elif intensity <= 0.2:
+            sat_intensity = 3
+        elif intensity <= 1.0:
+            sat_intensity = 4
+
         sats.append(
             {
                 "name":      item[1],
@@ -191,7 +201,7 @@ LIMIT 100
                 "lon":       decode_int(item[2], 52)["longitude"],
                 "tec_dev":   item[3],
                 "tec_mean":  item[4],
-                "intensity": intensity
+                "intensity": sat_intensity
             }
         )
 
@@ -207,8 +217,8 @@ LIMIT 100
         # TODO:
         area = {}
         area['timestamp']          = item[0]
-        area['Semi_major_ axes']   = radius
-        area['Semi_minor_axes']    = radius * 1.5
+        area['Semi_major_axes']    = int(radius / 1000)
+        area['Semi_minor_axes']    = int(radius * 1.5 / 1000)
         area['distance_to_centre'] = 270
         area['azimut']             = 43.2
         area['angle']              = 23.0
